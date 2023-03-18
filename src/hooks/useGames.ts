@@ -1,15 +1,14 @@
+import { GameQuery } from '../App';
 import { Game, Platform } from '../components/GameGrid';
 import useData from './useData';
-import { Genre } from './useGenres';
 
 const useGames = (
-	selectedGenre: Genre | null,
-	selectedPlatform: Platform | null
+	gameQuery: GameQuery
 ) =>
 	useData<Game>(
 		'/games',
-		{ params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
-		[selectedGenre?.id, selectedPlatform]
+		{ params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id } },
+		[gameQuery]
 	);
 
 export default useGames;
