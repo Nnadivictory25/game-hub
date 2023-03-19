@@ -2,6 +2,7 @@ import { GameQuery } from '../App';
 import { Game, Platform } from '../components/GameGrid';
 import useData from './useData';
 
+
 const useGames = (gameQuery: GameQuery) =>
 	useData<Game>(
 		'/games',
