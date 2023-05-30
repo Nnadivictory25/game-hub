@@ -1,8 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
-import { Game } from '../components/GameGrid';
 import apiClient from '../services/api-client';
 import { FetchRes } from '../services/api-client';
+import { Platform } from './usePlatforms';
+
+export interface Game {
+	id: number;
+	name: string;
+	background_image: string;
+	parent_platforms: { platform: Platform }[];
+	metacritic: number;
+	rating_top: number;
+}
 
 const useGames = (gameQuery: GameQuery) =>
 	useQuery<FetchRes<Game>, Error>({

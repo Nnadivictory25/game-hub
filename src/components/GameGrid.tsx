@@ -5,25 +5,6 @@ import GameCard from './GameCard';
 import GameCardContainer from './GameCardContainer';
 import GameCardSkeleton from './GameCardSkeleton';
 
-export interface Platform {
-	id: number;
-	name: string;
-	slug: string;
-}
-
-export interface Game {
-	id: number;
-	name: string;
-	background_image: string;
-	parent_platforms: { platform: Platform }[];
-	metacritic: number;
-	rating_top: number;
-}
-
-export interface FetchGameRes {
-	count: number;
-	results: Game[];
-}
 
 interface Props {
 	gameQuery: GameQuery;
@@ -33,7 +14,7 @@ const GameGrid = ({gameQuery}: Props) => {
 	const { data, error, isLoading } = useGames(gameQuery);
 	const skeletons = [1, 2, 3, 4, 5, 6];
 
-	if (error) return <p color='red.500'>{error.message}</p>
+	if (error) return <Text color='red.500'>{error.message}</Text>
 
 	return (
 			<SimpleGrid columns={{ sm: 2, lg: 3, xl: 4 }} spacing={6} padding='10px'>
